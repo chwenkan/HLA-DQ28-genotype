@@ -201,7 +201,7 @@ virulence_analysis <- function(virus_dir = "./virus_factor/gut", reads_table = "
     dt_i$age <- as.numeric(dt_i$age)
     if (!all(dt_i$factor == 0)) {
       dt_i$factor <- scale(dt_i$factor)
-      summ <- summary(lm(factor ~ Type + age + gender + BMI + Protein_g + Fat_g + Carbohydrate_g + Fiber_g + VitaminA_ug + VitaminB1_mg + VitaminB2_mg + VitaminB3_mg + VitaminC_mg + VitaminE_mg + Cholesterol_mg + Calcium_mg + Sodium_mg, dt_i))
+      summ <- summary(lm(factor ~ Type + week + age + gender + BMI + Protein_g + Fat_g + Carbohydrate_g + Fiber_g + VitaminA_ug + VitaminB1_mg + VitaminB2_mg + VitaminB3_mg + VitaminC_mg + VitaminE_mg + Cholesterol_mg + Calcium_mg + Sodium_mg, dt_i))
       result <- rbind(result, c(i, summ$coefficients[2,1], summ$coefficients[2,4]))
     }
   }
@@ -698,3 +698,4 @@ run_all_figures <- function() {
 `%||%` <- function(a, b) if (!is.null(a)) a else b
 
 # End of script
+
